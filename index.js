@@ -21,7 +21,7 @@ function getAllJokes(request, response) {
     for(let i = 0; i < dir.length; i++) {
         let file = fs.readFileSync(path.join(dataPath, i+ '.json'));
         let jokeJson = Buffer.from(file).toString();
-        let joke = JSON.parse(jokeJsoN);
+        let joke = JSON.parse(jokeJSON);
         joke.id = i;
 
         allJokes.push(joke);

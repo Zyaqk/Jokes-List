@@ -10,6 +10,10 @@ const server = http.createServer((request, response) => {
     if(request.url == '/jokes' && request.method == 'GET') {
         getAllJokes(request, response);
     }
+    
+    if(request.url == '/jokes' && request.method == 'POST') {
+        addJoke(request, response);
+    }
 });
 server.listen(3000);
 
@@ -28,17 +32,6 @@ function getAllJokes(request, response) {
     }
     response.end(JSON.stringify(allJokes));
 }
-
-let data = '';
-request.on('data', function(chunk) {
-    data += chunk;
-});
-
-request.on('end', function() {
-    if(request.url == '/jokes' && request.method == 'POST') {
-        addJoke(request, response);
-    }
-});
 
 function addJoke(request, response) {
     let data = '';

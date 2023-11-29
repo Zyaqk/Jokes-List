@@ -28,3 +28,33 @@ function getAllJokes(request, response) {
     }
     response.end(JSON.stringify(allJokes));
 }
+
+let data = '';
+request.on('data', function(chunk) {
+    data += chunk;
+});
+
+request.on('end', function() {
+    if(request.url == '/jokes' && request.method == 'POST') {
+        addJoke(request, response);
+    }
+});
+
+function addJoke(request, response) {
+    let data = '';
+    request.on('data', function(chunk) {
+        data += chunk;
+    });
+    request.on('end', function() {
+        let joke = JSON.parse(data);
+        joke.likes = 0;
+        joke.dislikes = 0;
+
+        let dir = fs.readdirSync(dataPath);
+        let fileName = dir.length+ '.json';
+        let filePath = path.join(dataPath, fileName);
+        fs.writeFileSync(filePath, JSON.stringify(joke));
+
+        response.end();
+    })
+}

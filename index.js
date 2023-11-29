@@ -10,7 +10,6 @@ const server = http.createServer((request, response) => {
     if(request.url == '/jokes' && request.method == 'GET') {
         getAllJokes(request, response);
     }
-    
     if(request.url == '/jokes' && request.method == 'POST') {
         addJoke(request, response);
     }

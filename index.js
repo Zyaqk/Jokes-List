@@ -59,4 +59,16 @@ function likeJoke(request, response) {
     const params = url.parse(request.url, true).query;
     let id = params.id;
     console.log(id);
+    if(id) {
+        let filePath = path.join(dataPath, id+ '.json');
+        let file = fs.readFileSync(filePath);
+        let jokeJSON = Buffer.from(file).toString();
+        let joke = JSON.parse(jokeJSON);
+
+        joke.likes++;
+
+        fs.writeFileSync(filePath, JSON.stringify(joke));
+    }
+
+    response.end();
 }

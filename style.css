@@ -1,0 +1,120 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+div {
+    width: 100%;
+}
+
+
+div.container {
+    max-width: 1000px;
+    width: 100%;
+    padding-right: calc(var(--bs-gutter-x) * .5);
+    padding-left: calc(var(--bs-gutter-x) * .5);
+    margin-right: auto;
+    margin-left: auto;
+    background: none;
+}
+
+nav {
+    background-color: red;
+    margin-top: 20px;
+    height: auto;
+    padding: 20px 0;
+    border-radius: 3px;
+}
+
+nav h1 {
+    padding-left: 50px;
+    color: white;
+    font-family: sans-serif;
+    font-weight: bold;
+}
+
+header {
+    background-color: red;
+    margin-top: 20px;
+    height: 500px;
+    padding: 20px 0;
+    border-radius: 3px;
+}
+
+#listJoke {
+    height: 400px;
+    width: 100%;
+    background: none;
+    border: 1px solid white;
+    overflow-y: scroll;
+    display: grid;
+    grid-template-columns: 30% 30% 30%;
+    grid-template-rows: auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto;    
+    column-gap: 10px;
+    justify-content: space-around;
+    row-gap: 15px;
+}
+
+.titleJoke {
+    margin-bottom: 20px;
+    padding-left: 20px;
+    color: white;
+    font-family: sans-serif;
+}
+
+.submitJoke {
+    margin-top: 10px;
+}
+
+.submitJoke input {
+    width: 80%;
+    margin-left: 0.8%;
+}
+
+.submitJoke button {
+    width: 14%;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    background-color: brown;
+    color: white;
+    font-family: sans-serif;
+    padding: 15px 6px;
+    transition: 0.2s ease-in-out;
+    font-size: 20px;
+}
+
+.submitJoke button:hover {
+    font-weight: bold;
+    transition: 0.2s ease-in-out;
+}
+
+.submitJoke input {
+    height: 45px;
+    border: 2px solid white;
+    border-radius: 3px;
+    background-color: red;
+    color: white;
+    font-size: 20px;
+    font-family: sans-serif;
+    outline: none;
+    padding: 0 20px;
+
+}
+
+
+h4 {
+    padding: 5px 10px;
+}
+
+.likes {
+    display: flex;
+    justify-content: space-around;
+}
+
+.oneId {
+    background-color: darkred;
+    color: white;
+    font-family: sans-serif;
+    font-size: 15px;
+}

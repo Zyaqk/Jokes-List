@@ -16,6 +16,9 @@ const server = http.createServer((request, response) => {
     if(request.url.startsWith('/like')) {
         likeJoke(request, response);
     }
+    if(request.url.startsWith('/dislike')) {
+        dislikeJoke(request, response);
+    }
 });
 server.listen(3000);
 
@@ -66,6 +69,25 @@ function likeJoke(request, response) {
         let joke = JSON.parse(jokeJSON);
 
         joke.likes++;
+
+        fs.writeFileSync(filePath, JSON.stringify(joke));
+    }
+
+    response.end();
+}
+
+function dislikeJoke(request, response) {
+    const url = require('url');
+    const params = url.parse(request.url, true).query;
+    let id = params.id;
+    console.log(id);
+    if(id) {
+        let filePath = path.join(dataPath, id+ '.json');
+        let file = fs.readFileSync(filePath);
+        let jokeJSON = Buffer.from(file).toString();
+        let joke = JSON.parse(jokeJSON);
+
+        joke.dislikes++;
 
         fs.writeFileSync(filePath, JSON.stringify(joke));
     }

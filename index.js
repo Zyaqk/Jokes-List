@@ -7,6 +7,8 @@ const folder = 'data';
 const dataPath = path.join(__dirname, folder);
 
 const server = http.createServer((request, response) => {
+    response.setHeader('Access-Control-Allow-Origin', '*')
+
     if(request.url == '/jokes' && request.method == 'GET') {
         getAllJokes(request, response);
     }

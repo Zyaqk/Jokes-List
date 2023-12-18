@@ -20,8 +20,8 @@ function getJokeHTML(joke) {
         <div class="oneId">
             <h4>${joke.content}</h4>
             <div class="likes">
-                <span><i class="fa-solid fa-thumbs-up"></i> ${joke.likes}</span>
-                <span><i class="fa-solid fa-thumbs-down"></i> ${joke.dislikes}</span>
+                <button onclick="likeAdd(${joke.id})" id="like"><span><i class="fa-solid fa-thumbs-up"></i> ${joke.likes}</span></button>
+                <button onclick="dislikeAdd(${joke.id})" id="dislike"><span><i class="fa-solid fa-thumbs-down"></i> ${joke.dislikes}</span></button>
             </div>
         </div>
 
@@ -62,3 +62,46 @@ jokeForm.addEventListener('submit', (event) => {
         currentLength++;
     }
 })
+
+
+const likeJoke = document.getElementById('like');
+const dislikeJoke = document.getElementById('dislike');
+
+// function likeAdd(event) {
+//     let like = 0;
+//     event.preventDefault();
+//     likes = likeJoke;
+//     const joke = {content, likes: 0, dislikes: 0, id: currentLength}
+//     const addLikeXhr = new XMLHttpRequest();
+
+//     addLikeXhr.open('POST', 'http://localhost:3000/jokes');
+//     addLikeXhr.send(JSON.stringify(joke))
+//     addLikeXhr.onload = () => {
+//         jokesContainer.innerHTML += getJokeHTML(joke);
+//         like++;
+//     }
+// }
+
+function likeAdd(id) {
+    const likeXhr = new XMLHttpRequest();
+    location.reload();
+    likeXhr.open('GET', 'http://localhost:3000/like?id='+id);
+    likeXhr.send();
+    likeXhr.responseType = 'json',
+    likeXhr.onload = () => {
+        const joke = likeXhr.response;
+        document.getElementById('joke_'+id).outerHTML = getJokeHTML(joke);
+    }
+}
+
+function dislikeAdd(id) {
+    const likeXhr = new XMLHttpRequest();
+    location.reload();
+    likeXhr.open('GET', 'http://localhost:3000/dislike?id='+id);
+    likeXhr.send();
+    likeXhr.responseType = 'json',
+    likeXhr.onload = () => {
+        const joke = likeXhr.response;
+        document.getElementById('joke_'+id).outerHTML = getJokeHTML(joke);
+    }
+}

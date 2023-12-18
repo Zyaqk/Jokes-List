@@ -18,6 +18,14 @@ div.container {
     background: none;
 }
 
+button {
+    border: none;
+    outline: none;
+    background: none;
+    color: white;
+    cursor: pointer;
+}
+
 nav {
     background-color: red;
     margin-top: 20px;
